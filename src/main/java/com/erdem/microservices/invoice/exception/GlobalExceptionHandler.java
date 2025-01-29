@@ -11,7 +11,8 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, String>> handleGenericException(Exception e) {
-        return ResponseEntity.status(500).body(Map.of("error", e.getMessage()));
+        return ResponseEntity.status(500).body(Map.of
+        ("error", e.getMessage()));
     }
     
     @ExceptionHandler(MaxUploadSizeExceededException.class)
