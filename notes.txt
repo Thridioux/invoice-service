@@ -1,0 +1,18 @@
+refresh your dependencies:
+mvn clean install
+
+Build and run the project:
+mvn spring-boot:run
+
+
+--Processing Images inside XML--
+
+Let’s say we have XML invoice has an image tag like this:
+<img src="/path/to/logo.png"/>
+
+During the transformation process reConvertToBase64:
+<img src="data:image/png;base64,iVBORw0KGgoAAAANS..."/>
+
+Now the image is fully embedded within the HTML and will display correctly, 
+even if the HTML is shared via email or on a web page.
+
