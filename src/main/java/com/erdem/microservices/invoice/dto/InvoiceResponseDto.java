@@ -2,20 +2,19 @@ package com.erdem.microservices.invoice.dto;
 
 public class InvoiceResponseDto {
     private String message;
-    private String htmlFilePath;
+    private String htmlContent;  
 
-    public InvoiceResponseDto(String message, String htmlFilePath) {
+    // Constructor 
+    public InvoiceResponseDto(String message, String htmlContent) {
         this.message = message;
-        this.htmlFilePath = htmlFilePath;
+        this.htmlContent = htmlContent;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public String getHtmlFilePath() {
-        return htmlFilePath;
+    public String getHtmlContent() {
+        return htmlContent;
     }
-    
-
 }
