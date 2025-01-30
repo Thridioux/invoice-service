@@ -36,14 +36,14 @@ public class InvoiceService {
     }
     
     @Cacheable(value = "invoiceHtmlCache", key = "#invoiceId")
-    public File convertInvoiceToHtml(File invoiceXml, String invoiceId) throws Exception {
+    public String convertInvoiceToHtml(File invoiceXml, String invoiceId) throws Exception {
         File xsltFile = null;
-        File htmlFile = new File("outputs", invoiceId + ".html"); 
+        File htmlFile;
     
         try {
             xsltFile = extractXsltFromXml(invoiceXml);
             htmlFile = performTransformation(invoiceXml, xsltFile, invoiceId);
-            return htmlFile;
+            return new String(Files.readAllBytes(htmlFile.toPath())); // Read HTML as string
         } finally {
             if (xsltFile != null && xsltFile.exists()) {
                 xsltFile.delete();
@@ -53,6 +53,7 @@ public class InvoiceService {
             }
         }
     }
+    
     
     
 
